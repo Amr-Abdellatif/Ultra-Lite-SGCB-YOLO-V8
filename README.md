@@ -3,15 +3,25 @@
 
 This repository contains the standalone reproducibility environment for the research on **SGCB (Selective Grouped Convolution Block) Ultra-Lite YOLO architectures**.
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20157395.svg)](https://doi.org/10.5281/zenodo.20157395)
 
 ---
 
 ## 📖 Citation
 
-If you use this work in your research, please cite our article:
+If you use this work in your research, please cite our article published in **The Visual Computer**:
 
 > **Abdellatif, A. O., Sakr, N., & Haikal, A. Y. (2026). Ultra-Lite YOLOv8: Enhancing Tiny Object Detection via Selective SGCB Modules and High-Resolution Feature Maps. *The Visual Computer*.**
+
+```bibtex
+@article{abdellatif2026ultralite,
+  title={Ultra-Lite YOLOv8: Enhancing Tiny Object Detection via Selective SGCB Modules and High-Resolution Feature Maps},
+  author={Abdellatif, Amr O. and Sakr, Noha and Haikal, Amira Y.},
+  journal={The Visual Computer},
+  year={2026},
+  publisher={Springer Nature}
+}
+```
 
 ---
 
@@ -94,7 +104,6 @@ python scripts/bulk_convert_onnx.py
 - **Location**: Converted models are stored in `<experiment_folder>/ONNX_weights/best.onnx`.
 - **Note**: Requires `onnxscript` and `onnxruntime` to be installed.
 
-
 ---
 
 ## 🧠 Key Algorithm: SGCB Module
@@ -106,8 +115,6 @@ The **Spatially-Gated Context Block (SGCB)** is a novel architectural unit desig
 
 ---
 
----
-
 ## 📂 Repository Structure
 - `experiments/`: Core training and comparison scripts for the paper.
 - `third_party/ultralytics/`: Vendored YOLOv8 codebase with integrated SGCB modules.
@@ -115,7 +122,6 @@ The **Spatially-Gated Context Block (SGCB)** is a novel architectural unit desig
 - `scripts/`: Utility scripts for data downloading, batch runs, and ONNX conversion.
 - `results/`: (Auto-generated) Storage for ablation studies and visual metrics.
 - `data/`: (Auto-generated) Location for training datasets.
-- `journal_submission/`: LaTeX source and PDF for the manuscript.
 
 ---
 📖 *Methodology: Technical Replication Report for Modified YOLO Architectures*

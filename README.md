@@ -11,7 +11,7 @@ This repository contains the standalone reproducibility environment for the rese
 
 If you use this work in your research, please cite our article:
 
-> **Abdellatif, A. O., Sakr, N., & Haikal, A. Y. (2024). Ultra-Lite YOLOv8: Enhancing Tiny Object Detection via Selective SGCB Modules and High-Resolution Feature Maps. *The Visual Computer*.**
+> **Abdellatif, A. O., Sakr, N., & Haikal, A. Y. (2026). Ultra-Lite YOLOv8: Enhancing Tiny Object Detection via Selective SGCB Modules and High-Resolution Feature Maps. *The Visual Computer*.**
 
 ---
 
@@ -94,11 +94,6 @@ python scripts/bulk_convert_onnx.py
 - **Location**: Converted models are stored in `<experiment_folder>/ONNX_weights/best.onnx`.
 - **Note**: Requires `onnxscript` and `onnxruntime` to be installed.
 
-### Export Individual Model
-To convert any single `.pt` file:
-```bash
-python scripts/export_onnx.py --model path/to/model.pt --imgsz 640
-```
 
 ---
 
@@ -111,13 +106,6 @@ The **Spatially-Gated Context Block (SGCB)** is a novel architectural unit desig
 
 ---
 
-## 📦 Pre-trained Weights
-
-Model weights are available for download via the following links:
-- [UltraLite-Nano](https://github.com/Amr-Abdellatif/sgcb-experiments/blob/main/Comparison_ep200_bs30_img384_pat10/yolov8n_local_attn_ultra/weights/best.pt)
-- [UltraLite-Small](https://github.com/Amr-Abdellatif/sgcb-experiments/blob/main/Comparison_ep200_bs30_img640_pat10/yolov8s_local_attn_ultra/weights/best.pt)
-- [UltraLite-X](https://github.com/Amr-Abdellatif/sgcb-experiments/blob/main/Comparison_ep200_bs30_img640_pat10/yolov8x_local_attn_ultra/weights/best.pt)
-
 ---
 
 ## 📂 Repository Structure
@@ -128,11 +116,6 @@ Model weights are available for download via the following links:
 - `results/`: (Auto-generated) Storage for ablation studies and visual metrics.
 - `data/`: (Auto-generated) Location for training datasets.
 - `journal_submission/`: LaTeX source and PDF for the manuscript.
-
-## 🛠️ Troubleshooting & Notes
-- **VRAM Issues**: If you hit `CUDA OutOfMemoryError`, reduce the `--batch` size or the `--imgsz`.
-- **OpenMP Error**: On some Windows systems, you may see an OpenMP conflict. The scripts automatically include a fix for this (`KMP_DUPLICATE_LIB_OK=TRUE`).
-- **GPU Usage**: Ensure you have a CUDA-enabled PyTorch installation. If training on CPU, use `--device cpu`.
 
 ---
 📖 *Methodology: Technical Replication Report for Modified YOLO Architectures*

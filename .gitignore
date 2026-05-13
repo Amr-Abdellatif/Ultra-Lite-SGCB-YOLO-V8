@@ -1,0 +1,41 @@
+# Data and outputs
+data/
+results/
+runs/
+# Environment variables
+.env
+
+# Logs and caches
+*.log
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+
+# Env
+.venv/
+.env
+
+# Archives and media
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+*.mp4
+*.mov
+*.avi
+
+# Large weights and models
+*.pt
+*.onnx
+*.engine
+
+# Dataset cache
+*.cache
+
+# Experiment output directories
+Comparison_*
+Exp1_*
+Exp2_*

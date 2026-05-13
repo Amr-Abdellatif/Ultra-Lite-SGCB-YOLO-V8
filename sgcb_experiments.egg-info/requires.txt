@@ -1,0 +1,4 @@
+ultralytics
+
+[roboflow]
+roboflow>=1.1.0

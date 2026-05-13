@@ -1,0 +1,5 @@
+model_name,model_path,error,status
+yolov8n_baseline,yolov8n.yaml,"Dataset '../../configs/VisDrone.yaml' error  Dataset '../../configs/VisDrone.yaml' images not found, missing path 'D:\EGID-generator\real images\data\VisDrone\VisDrone2019-DET-val\images'
+Note dataset download directory is 'D:\EGID-generator\real images\datasets'. You can update this in 'C:\Users\opc\AppData\Roaming\Ultralytics\settings.json'",failed
+yolov8n_ultra_lite,ultralytics/cfg/models/v8/yolov8-visdrone-ultra-lite.yaml,"Dataset '../../configs/VisDrone.yaml' error  Dataset '../../configs/VisDrone.yaml' images not found, missing path 'D:\EGID-generator\real images\data\VisDrone\VisDrone2019-DET-val\images'
+Note dataset download directory is 'D:\EGID-generator\real images\datasets'. You can update this in 'C:\Users\opc\AppData\Roaming\Ultralytics\settings.json'",failed

@@ -1,0 +1,64 @@
+Metadata-Version: 2.4
+Name: sgcb-experiments
+Version: 0.1.0
+Summary: Standalone reproducibility repo for SGCB Ultra-Lite YOLOv8 experiments.
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: ultralytics
+Provides-Extra: roboflow
+Requires-Dist: roboflow>=1.1.0; extra == "roboflow"
+
+# SGCB Experiments (Ultra-Lite YOLOv8)
+
+This repo vendors a snapshot of Ultralytics with SGCB and provides scripts/configs to reproduce the experiments in the paper. It is intended to be shared as a standalone repo (single clone).
+
+## Layout
+- third_party/ultralytics: vendored Ultralytics code (SGCB is in ultralytics/nn/modules/block.py)
+- experiments: scripts and notes copied from modifying_yolo
+- data: datasets (not versioned)
+- results: outputs (not versioned)
+- scripts: helper wrappers
+
+## Installation Guide (For Beginners)
+
+If you're new to this, follow these steps to set up the environment on Windows:
+
+1. **Install Conda**: Download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) (recommended) or Anaconda.
+2. **Open Terminal**: Search for "Anaconda Prompt" in your Start menu and open it. Alternatively, use PowerShell if you've already initialized Conda for it.
+3. **Create the Environment**: Run the following command to create a new environment specifically for this project:
+   ```powershell
+   conda create -n ultralytics-thesis python=3.10 -y
+   ```
+4. **Activate the Environment**:
+   ```powershell
+   conda activate ultralytics-thesis
+   ```
+5. **Install `uv`**: This project uses `uv` for fast dependency management. Install it into your active environment:
+   ```powershell
+   pip install uv
+   ```
+6. **Install Dependencies**: Ensure you are in the project root directory (`sgcb-experiments`), then run:
+   ```powershell
+   uv pip install -e .
+   ```
+   *Note: If `uv` warns about not being in a virtual environment, you can add the `--system` flag, but it's usually not needed if Conda is active.*
+
+## Datasets
+- Download VisDrone and convert labels:
+  python .\scripts\download_visdrone.py --data-root .\data\VisDrone
+- Dataset config used by the scripts:
+  configs\VisDrone.yaml
+
+## Run
+- Minimal reviewer run (smoke test):
+  python .\scripts\run_all.py --device cpu
+
+## Manual Runs
+- Some experiment scripts expect the working directory to be third_party\ultralytics so model paths resolve:
+  cd .\third_party\ultralytics
+  python ..\experiments\train_baseline_vs_ultralite.py --data ..\configs\VisDrone.yaml --quick-test --epochs 5
+
+## Notes
+- Datasets are not included. Place them under data/ and update paths in scripts.
+- Outputs are written to results/ or runs/ depending on the script.
+- Ultralytics is AGPL-3.0; see third_party/ultralytics/LICENSE.

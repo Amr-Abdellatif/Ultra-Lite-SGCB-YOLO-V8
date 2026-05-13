@@ -1,0 +1,57 @@
+# YOLOv8 UltraLite-S "P2-HighRes" for VisDrone
+# Strategy: Add P2 Head (Stride 4) to resolve tiny objects, beating S-YOLOv11's fusion with pure resolution.
+
+# Parameters
+nc: 10
+scales:
+  s: [0.33, 0.50, 1024] 
+
+# Backbone
+backbone:
+  - [-1, 1, Conv, [64, 3, 2]]          # 0-P1/2
+  - [-1, 1, Conv, [128, 3, 2]]         # 1-P2/4
+  - [-1, 3, C2f, [128, True]]          # 2 (Keep Standard C2f - Raw Pixels)
+  
+  - [-1, 1, Conv, [256, 3, 2]]         # 3-P3/8
+  # P3: SGCB for Context
+  - [-1, 6, SGCB, [256, True, 1, 0.5, 7]] # 4 
+
+  - [-1, 1, Conv, [512, 3, 2]]         # 5-P4/16
+  # P4: SGCB for Context
+  - [-1, 6, SGCB, [512, True, 1, 0.5, 7]] # 6 
+  
+  - [-1, 1, Conv, [1024, 3, 2]]        # 7-P5/32
+  - [-1, 3, C2f, [1024, True]]         # 8 (Standard P5)
+  - [-1, 1, SPPF, [1024, 5]]           # 9
+
+# Head (4-Scale Architecture)
+head:
+  # --- Top-Down Path ---
+  - [-1, 1, nn.Upsample, [None, 2, 'nearest']]
+  - [[-1, 6], 1, Concat, [1]]          # cat backbone P4
+  - [-1, 3, SGCB, [512, False, 1, 0.5, 7]] # 12 (Fusion P4)
+
+  - [-1, 1, nn.Upsample, [None, 2, 'nearest']]
+  - [[-1, 4], 1, Concat, [1]]          # cat backbone P3
+  - [-1, 3, SGCB, [256, False, 1, 0.5, 7]] # 15 (Fusion P3)
+
+  # NEW: Down to P2 (Stride 4)
+  - [-1, 1, nn.Upsample, [None, 2, 'nearest']]
+  - [[-1, 2], 1, Concat, [1]]          # cat backbone P2
+  - [-1, 3, C2f, [128]]                # 18 (Keep Standard C2f for Max Detail)
+
+  # --- Bottom-Up Path ---
+  - [-1, 1, Conv, [128, 3, 2]]         # Stride 2 conv
+  - [[-1, 15], 1, Concat, [1]]         # cat P3
+  - [-1, 3, C2f, [256]]                # 21 (P3 Head)
+
+  - [-1, 1, Conv, [256, 3, 2]]
+  - [[-1, 12], 1, Concat, [1]]         # cat P4
+  - [-1, 3, C2f, [512]]                # 24 (P4 Head)
+
+  - [-1, 1, Conv, [512, 3, 2]]
+  - [[-1, 9], 1, Concat, [1]]          # cat P5
+  - [-1, 3, C2f, [1024]]               # 27 (P5 Head)
+
+  # Detect on 4 Scales: P2 (18), P3 (21), P4 (24), P5 (27)
+  - [[18, 21, 24, 27], 1, Detect, [nc]]

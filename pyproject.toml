@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=70.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sgcb-experiments"
+version = "0.1.0"
+description = "Standalone reproducibility repo for SGCB Ultra-Lite YOLOv8 experiments."
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "ultralytics",
+    "torch",
+    "torchvision",
+    "roboflow>=1.1.0",
+    "python-dotenv",
+]
+
+[project.optional-dependencies]
+# Moved roboflow to main dependencies
+
+[tool.setuptools]
+packages = []
+
+[tool.uv.sources]
+ultralytics = { path = "third_party/ultralytics" }
+torch = { index = "pytorch" }
+torchvision = { index = "pytorch" }
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu121"
+explicit = true

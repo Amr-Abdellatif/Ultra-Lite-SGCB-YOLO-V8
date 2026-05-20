@@ -4,7 +4,7 @@ results/
 runs/
 # Environment variables
 .env
-
+response_letter.pdf
 # Logs and caches
 *.log
 __pycache__/

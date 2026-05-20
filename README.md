@@ -3,11 +3,7 @@
 
 This repository contains the standalone reproducibility environment for the research on **SGCB (Selective Grouped Convolution Block) Ultra-Lite YOLO architectures**.
 
-<<<<<<< HEAD
 [DOI: https://doi.org/10.5281/zenodo.20157395](https://doi.org/10.5281/zenodo.20157395)
-=======
-[![DOI](https://doi.org/10.5281/zenodo.20157395)
->>>>>>> def22cd057537edd23f3f9ba20e0b14a35e39ab5
 
 ---
 

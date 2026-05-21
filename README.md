@@ -1,7 +1,7 @@
 # SGCB Ultra-Lite YOLOv8 Experiments 🚀
 
 
-This repository contains the standalone reproducibility environment for the research on **SGCB (Selective Grouped Convolution Block) Ultra-Lite YOLO architectures**.
+This repository contains the standalone reproducibility environment for the research on **SGCB Ultra-Lite YOLO architectures**.
 
 [DOI: https://doi.org/10.5281/zenodo.20157395](https://doi.org/10.5281/zenodo.20157395)
 

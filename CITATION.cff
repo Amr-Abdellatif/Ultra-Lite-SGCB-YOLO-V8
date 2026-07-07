@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+title: "SGCB Ultra-Lite YOLOv8 Experiments"
+message: "If you use this repository, please cite the manuscript and archived reproducibility package."
+type: software
+authors:
+  - given-names: Amr O.
+    family-names: Abdellatif
+  - given-names: Noha
+    family-names: Sakr
+  - given-names: Amira Y.
+    family-names: Haikal
+repository-code: "https://github.com/Amr-Abdellatif/Ultra-Lite-SGCB-YOLO-V8"
+url: "https://github.com/Amr-Abdellatif/Ultra-Lite-SGCB-YOLO-V8"
+doi: "10.5281/zenodo.20157395"
+license: AGPL-3.0-only
+keywords:
+  - tiny object detection
+  - UAV imagery
+  - YOLOv8
+  - spatial attention
+  - VisDrone
+  - AU-AIR
+preferred-citation:
+  type: article
+  title: "Ultra-Lite YOLOv8: Enhancing Tiny Object Detection via Selective SGCB Modules and High-Resolution Feature Maps"
+  authors:
+    - given-names: Amr O.
+      family-names: Abdellatif
+    - given-names: Noha
+      family-names: Sakr
+    - given-names: Amira Y.
+      family-names: Haikal
+  journal: "The Visual Computer"
+  year: 2026
+  notes: "Manuscript under review"
+  doi: "10.5281/zenodo.20157395"

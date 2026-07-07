@@ -2,9 +2,11 @@
 data/
 results/
 runs/
+downloaded_results/
 # Environment variables
 .env
 response_letter.pdf
+
 # Logs and caches
 *.log
 __pycache__/
@@ -15,6 +17,10 @@ __pycache__/
 
 # Env
 .venv/
+.venv-gflops/
+.uv-cache/
+.uv-python/
+.ultralytics-config/
 .env
 
 # Archives and media

@@ -1,0 +1,28 @@
+name: sgcb
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - pytorch
+  - torchvision
+  - pytorch-cuda=12.1
+  - numpy
+  - pandas
+  - pyyaml
+  - pillow
+  - matplotlib
+  - scipy
+  - tqdm
+  - opencv
+  - pip:
+      - -e third_party/ultralytics
+      - -e .
+      - roboflow>=1.1.0
+      - python-dotenv
+      - onnx
+      - onnxruntime
+      - thop

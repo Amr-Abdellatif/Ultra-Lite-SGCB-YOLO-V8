@@ -1,0 +1,17 @@
+SGCB Ultra-Lite YOLOv8 Experiments License
+
+SPDX-License-Identifier: AGPL-3.0-only
+
+This repository is distributed under the GNU Affero General Public License
+version 3.0 (AGPL-3.0).
+
+The repository includes a vendored copy of Ultralytics YOLO under
+third_party/ultralytics/, which is also licensed under AGPL-3.0. The full
+AGPL-3.0 license text is included in:
+
+third_party/ultralytics/LICENSE
+
+Unless a file states otherwise, the experiment scripts, configuration files,
+documentation, and SGCB-related modifications in this repository follow the
+same AGPL-3.0 terms. Dataset files, trained weights, and third-party assets may
+have their own terms and are not automatically relicensed by this notice.

@@ -1,15 +1,11 @@
 # SGCB Ultra-Lite YOLOv8 Experiments
 
-<<<<<<< HEAD
 Standalone reproducibility repository for **Ultra-Lite YOLOv8 with Spatially-Gated Context Blocks (SGCB)** for aerial tiny-object detection on VisDrone2019-DET, with additional AU-AIR validation.
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20157395.svg)](https://doi.org/10.5281/zenodo.20157395)
+([https://doi.org/10.5281/zenodo.20157395](https://zenodo.org/records/21210376))
 =======
 Standalone reproducibility repository for **Ultra-Lite YOLOv8 with Spatially-Gated Context Blocks (SGCB)** for aerial tiny-object detection on VisDrone2019-DET.
 
-#DOI
-(https://doi.org/10.5281/zenodo.20157395)
->>>>>>> d9952b10fbe0e2796efca6d623c4de029ea870ce
 
 ## Citation
 

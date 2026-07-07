@@ -1,8 +1,15 @@
 # SGCB Ultra-Lite YOLOv8 Experiments
 
+<<<<<<< HEAD
 Standalone reproducibility repository for **Ultra-Lite YOLOv8 with Spatially-Gated Context Blocks (SGCB)** for aerial tiny-object detection on VisDrone2019-DET, with additional AU-AIR validation.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20157395.svg)](https://doi.org/10.5281/zenodo.20157395)
+=======
+Standalone reproducibility repository for **Ultra-Lite YOLOv8 with Spatially-Gated Context Blocks (SGCB)** for aerial tiny-object detection on VisDrone2019-DET.
+
+#DOI
+(https://doi.org/10.5281/zenodo.20157395)
+>>>>>>> d9952b10fbe0e2796efca6d623c4de029ea870ce
 
 ## Citation
 
@@ -23,6 +30,7 @@ If you use this repository, please cite the manuscript and the archived reproduc
 
 We recommend using `uv`, but `pip` or `conda` can also be used.
 
+<<<<<<< HEAD
 Conda environment:
 
 ```bash
@@ -92,6 +100,50 @@ python scripts/download_prepare_auair.py
 Nano-scale models at `384 x 384`.
 
 ```bash
+=======
+```powershell
+uv pip install -e .
+```
+
+Optional Roboflow fallback:
+
+```powershell
+cp .env.example .env
+```
+
+Then edit `.env` and add `ROBOFLOW_API_KEY` if you plan to use the Roboflow download path.
+
+## Dataset
+
+The experiments use **VisDrone2019-DET**. The canonical dataset config is:
+
+```text
+configs/VisDrone.yaml
+```
+
+Expected local layout:
+
+```text
+data/VisDrone/
+  VisDrone2019-DET-train/images
+  VisDrone2019-DET-val/images
+  VisDrone2019-DET-test-dev/images
+```
+
+Download helper:
+
+```bash
+python scripts/download_visdrone.py
+```
+
+## Experiments
+
+### Experiment 1: Nano Controlled Comparison
+
+Nano-scale models at `384 x 384`.
+
+```bash
+>>>>>>> d9952b10fbe0e2796efca6d623c4de029ea870ce
 python experiments/exp1_nano_reproduction.py --epochs 300 --device 0 --batch 30 --imgsz 384
 ```
 
@@ -116,6 +168,7 @@ Models:
 - UltraLite-S
 - UltraLite-X
 
+<<<<<<< HEAD
 ### AU-AIR Additional Validation
 
 Nano-scale AU-AIR validation at `384 x 384`.
@@ -200,6 +253,40 @@ python scripts/validate_controlled_checkpoints.py \
   --output journal_submission/controlled_bestpt_val_summary.csv
 ```
 
+=======
+### Experiment 3: Full Ablation Study
+
+The ablation uses the full controlled Nano protocol, not the earlier 10-epoch pilot.
+
+```bash
+python experiments/ablation_study.py --epochs 300 --device 0 --batch 30 --imgsz 384
+```
+
+Default output:
+
+```text
+results/ablation_full_ep300_bs30_img384_pat10/
+```
+
+The final downloaded lean ablation package used for manuscript updates is stored locally under:
+
+```text
+downloaded_results/ablation_full_ep300_bs30_img384_pat10_lean/
+```
+
+## Controlled Validation Metrics
+
+The controlled manuscript metrics are produced by revalidating each trained `weights/best.pt` checkpoint on the VisDrone2019-DET validation split.
+
+```bash
+python scripts/validate_controlled_checkpoints.py \
+  --data configs/VisDrone.yaml \
+  --device 0 \
+  --batch 30 \
+  --output journal_submission/controlled_bestpt_val_summary.csv
+```
+
+>>>>>>> d9952b10fbe0e2796efca6d623c4de029ea870ce
 For CPU-only validation:
 
 ```bash
@@ -226,6 +313,7 @@ Current controlled best-checkpoint validation results:
 | YOLOv8s baseline | 640 | 11.14 | 28.67 | 50.5 | 37.8 | 38.9 | 23.1 |
 | YOLO11s baseline | 640 | 9.43 | 21.57 | 51.0 | 37.8 | 38.6 | 23.1 |
 | UltraLite-S | 640 | 9.89 | 33.20 | 55.5 | 42.3 | 44.4 | 27.0 |
+<<<<<<< HEAD
 | UltraLite-X | 640 | 41.95 | 199.46 | 59.4 | 49.4 | 51.0 | 31.7 |
 
 ## Tiny-Object Size-Stratified Recall
@@ -347,6 +435,9 @@ Current AU-AIR scaling validation results:
 | YOLO11s baseline | 640 | 9.43 | 21.56 | 0.384 | 0.403 | 0.338 | 0.148 |
 | UltraLite-S | 640 | 9.89 | 33.19 | 0.356 | 0.414 | 0.346 | 0.156 |
 | UltraLite-X | 640 | 41.95 | 199.44 | 0.363 | 0.421 | 0.340 | 0.153 |
+=======
+| UltraLite-X | 640 | 41.95 | 199.46 | 59.4 | 49.4 | 51.0 | 31.9 |
+>>>>>>> d9952b10fbe0e2796efca6d623c4de029ea870ce
 
 ## Model Checkpoints
 
@@ -385,6 +476,7 @@ ONNX_weights/best.onnx
 ```
 
 ## SGCB Module
+<<<<<<< HEAD
 
 The **Spatially-Gated Context Block (SGCB)** preserves spatial detail for tiny aerial objects by avoiding global spatial pooling. It uses:
 
@@ -403,6 +495,26 @@ The **Spatially-Gated Context Block (SGCB)** preserves spatial detail for tiny a
 - `downloaded_results/`: Locally downloaded result bundles; ignored by git.
 - `data/`: Local datasets; ignored by git.
 
+=======
+
+The **Spatially-Gated Context Block (SGCB)** preserves spatial detail for tiny aerial objects by avoiding global spatial pooling. It uses:
+
+1. Large-kernel depthwise convolution to capture local context.
+2. Dense feature aggregation to preserve fine detail.
+3. Selective insertion at P3/P4 stages to balance accuracy and parameter count.
+
+## Repository Structure
+
+- `experiments/`: Training and controlled comparison scripts.
+- `third_party/ultralytics/`: Vendored Ultralytics code with SGCB model definitions.
+- `configs/`: Dataset and model configuration files.
+- `scripts/`: Dataset, validation, GFLOPs, export, and deployment utilities.
+- `journal_submission/`: Manuscript files and canonical controlled validation summary.
+- `results/`: Auto-generated experiment outputs.
+- `downloaded_results/`: Locally downloaded result bundles; ignored by git.
+- `data/`: Local datasets; ignored by git.
+
+>>>>>>> d9952b10fbe0e2796efca6d623c4de029ea870ce
 ## Troubleshooting
 
 - If CUDA runs out of memory, reduce `--batch` or use `--device cpu` for validation.
